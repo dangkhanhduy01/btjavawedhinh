@@ -1,21 +1,23 @@
-package my.servlets;
-
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
+package my.servlets;
 
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+
 
 /**
  *
  * @author ADMIN
  */
+@WebServlet(name = "HinhTronServlet", urlPatterns = {"/HinhTronServlet"})
 public class HinhTronServlet extends HttpServlet {
 
     /**
@@ -29,9 +31,12 @@ public class HinhTronServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        double bk = Double.parseDouble(request.getParameter("bankinh"));
-         double dientich = Math.PI*bk*bk;
-          double chuvi = Math.PI*2*bk;
+        //b1. Lấy tham số từ client
+        double bk =Double.parseDouble(request.getParameter("bankinh"));
+        //b2. Xử lý yêu cầu
+        double dt =Math.PI*bk*bk;
+        double cv =Math.PI*2*bk;
+        //b3. Hồi đáo kết quả
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
@@ -41,7 +46,11 @@ public class HinhTronServlet extends HttpServlet {
             out.println("<title>Servlet HinhTronServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<li>Diện tích " + dientich +  "chu vi"+chuvi+" </li>");
+            out.println("<h1>Kết quả xử lý</h1>");
+            out.println("<ul>");
+            out.println("<li>Diện tích:<b>" + dt +"</b>");
+            out.println("<li>Chu vi:<b>" + cv +"</b>");
+            out.println("</ul>");
             out.println("</body>");
             out.println("</html>");
         }

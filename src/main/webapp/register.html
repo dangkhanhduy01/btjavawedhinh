@@ -8,8 +8,38 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
         <title>TODO supply a title</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            label{
+                display: block;
+                font-weight: bold;
+            }
+        </style>
     </head>
     <body>
-        <div>TODO write content</div>
+        <h2>THÔNG TIN ĐĂNG KÝ</h2>
+        <form action="RegisterServlet" method="POST" enctype="multipart/form-data">
+            <div>
+                <label> Họ tên </label>
+                <input type="text" name="hoten" value="" />
+            </div>
+            <div>
+                <label> Giới tính </label>
+                <input type="radio" name="gioitinh" value="Nam" checked="checked"/> Nam
+                <input type="radio" name="gioitinh" value="Nữ" /> Nữ
+            </div>
+            <div>
+                <label> Sở thích </label>
+                <input type="checkbox" name="sothich" value="Mua sắm" /> Mua sắm
+                <input type="checkbox" name="sothich" value="Du lịch" /> Du lịch
+                <input type="checkbox" name="sothich" value="Xem phim" /> Xem phim
+            </div>
+            <div>
+                <label> Ảnh đại diện </label>
+                <input type="file" name="hinh" />
+            </div>
+            <div>
+                <input type="submit" value="Gửi" />
+            </div>
+        </form>
     </body>
 </html>
